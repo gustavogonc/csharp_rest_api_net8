@@ -1,0 +1,6 @@
+@RestWithASP_NET8Udemy_HostAddress = http://localhost:5144
+
+GET {{RestWithASP_NET8Udemy_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
