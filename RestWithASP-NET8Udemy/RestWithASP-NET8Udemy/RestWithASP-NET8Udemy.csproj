@@ -8,4 +8,8 @@
     <RootNamespace>RestWithASP_NET8Udemy</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
