@@ -1,12 +1,11 @@
-﻿using Asp.Versioning;
-using RestWithASPNETErudio.Business;
+﻿using RestWithASPNETErudio.Business;
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETErudio.Data.VO;
+using RestWithASP_NET8Udemy.Hypermedia.Filters;
 
 namespace RestWithASPNETErudio.Controllers
 {
 
-    [ApiVersion("1")]
     [ApiController]
     [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonController : ControllerBase
@@ -28,6 +27,7 @@ namespace RestWithASPNETErudio.Controllers
         // Maps GET requests to https://localhost:{port}/api/person
         // Get no parameters for FindAll -> Search All
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
             return Ok(_personBusiness.FindAll());
@@ -37,6 +37,7 @@ namespace RestWithASPNETErudio.Controllers
         // receiving an ID as in the Request Path
         // Get with parameters for FindById -> Search by ID
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
             var person = _personBusiness.FindByID(id);
@@ -47,6 +48,7 @@ namespace RestWithASPNETErudio.Controllers
         // Maps POST requests to https://localhost:{port}/api/person/
         // [FromBody] consumes the JSON object sent in the request body
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
@@ -56,6 +58,7 @@ namespace RestWithASPNETErudio.Controllers
         // Maps PUT requests to https://localhost:{port}/api/person/
         // [FromBody] consumes the JSON object sent in the request body
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();

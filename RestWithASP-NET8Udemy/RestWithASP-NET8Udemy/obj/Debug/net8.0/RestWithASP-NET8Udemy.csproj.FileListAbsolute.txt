@@ -1,0 +1,7 @@
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.csproj.AssemblyReference.cache
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.GeneratedMSBuildEditorConfig.editorconfig
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.AssemblyInfoInputs.cache
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.AssemblyInfo.cs
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.csproj.CoreCompileInputs.cache
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.MvcApplicationPartsAssemblyInfo.cache
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.sourcelink.json

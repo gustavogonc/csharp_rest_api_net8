@@ -2,12 +2,13 @@ using RestWithASPNETErudio.Model.Context;
 using Microsoft.EntityFrameworkCore;
 using RestWithASPNETErudio.Business.Implementations;
 using RestWithASPNETErudio.Business;
-using MySqlConnector;
 using Serilog;
 using EvolveDb;
 using RestWithASPNETErudio.Repository.Generic;
 using RestWithASPNETErudio.Repository;
 using Microsoft.Net.Http.Headers;
+using RestWithASP_NET8Udemy.Hypermedia.Filters;
+using RestWithASP_NET8Udemy.Hypermedia.Enricher;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,11 +36,14 @@ builder.Services.AddMvc(options =>
 })
 .AddXmlSerializerFormatters();
 
-builder.Services.AddApiVersioning();
 
+var filterOptions = new HyperMediaFilterOptions();
+
+filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
 //Dependency Injection
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplementation>();
+builder.Services.AddSingleton(filterOptions);
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
@@ -52,6 +56,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
 
 app.Run();
 
