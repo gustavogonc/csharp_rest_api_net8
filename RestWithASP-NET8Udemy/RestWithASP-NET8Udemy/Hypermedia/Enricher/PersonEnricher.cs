@@ -10,7 +10,7 @@ namespace RestWithASP_NET8Udemy.Hypermedia.Enricher
         private readonly object _lock = new object();
         protected override Task EnrichModel(PersonVO content, IUrlHelper urlHelper)
         {
-            var path = "api/persons/v1";
+            var path = "api/person/v1";
             string link = getLink(content.Id, urlHelper, path);
 
             content.Links.Add(new HyperMediaLink()
