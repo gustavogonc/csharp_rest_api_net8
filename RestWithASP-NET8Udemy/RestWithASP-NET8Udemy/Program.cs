@@ -10,6 +10,7 @@ using Microsoft.Net.Http.Headers;
 using RestWithASP_NET8Udemy.Hypermedia.Filters;
 using RestWithASP_NET8Udemy.Hypermedia.Enricher;
 using MySqlConnector;
+using Microsoft.AspNetCore.Rewrite;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,7 @@ builder.Services.AddControllers();
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(
     connection,
-    new MySqlServerVersion(new Version(8, 0,29)))
+    new MySqlServerVersion(new Version(8, 0, 29)))
 );
 
 if (builder.Environment.IsDevelopment())
@@ -47,6 +48,22 @@ builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplementation>();
 builder.Services.AddSingleton(filterOptions);
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1",
+        new Microsoft.OpenApi.Models.OpenApiInfo
+        {
+            Title = "REST API FROM 0 TO AZURE WITH ASP.NET CORE 8 AND DOCKER",
+            Version = "V1",
+            Description = "API RESTFUL DEVELOPED",
+            Contact = new Microsoft.OpenApi.Models.OpenApiContact
+            {
+                Name = "Gustavo Gonçalves",
+                Url = new Uri("https://github.com/gustavogonc")
+            }
+        });
+});
+
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 var app = builder.Build();
@@ -54,6 +71,18 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
+
+app.UseSwagger();
+
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "REST API - V1");
+});
+
+var option = new RewriteOptions();
+option.AddRedirect("^$", "swagger");
+
+app.UseRewriter(option);
 
 app.UseAuthorization();
 

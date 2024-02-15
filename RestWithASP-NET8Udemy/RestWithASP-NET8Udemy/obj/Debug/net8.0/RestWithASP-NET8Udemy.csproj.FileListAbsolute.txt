@@ -46,3 +46,7 @@ E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET
 E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.pdb
 E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\RestWithASP-NET8Udemy.genruntimeconfig.cache
 E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\obj\Debug\net8.0\ref\RestWithASP-NET8Udemy.dll
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy\RestWithASP-NET8Udemy\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
