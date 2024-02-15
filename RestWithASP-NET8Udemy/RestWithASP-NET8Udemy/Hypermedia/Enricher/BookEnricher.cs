@@ -5,17 +5,17 @@ using System.Text;
 
 namespace RestWithASP_NET8Udemy.Hypermedia.Enricher
 {
-    public class PersonEnricher : ContentResponseEnricher<PersonVO>
+    public class BookEnricher : ContentResponseEnricher<BookVO>
     {
-        protected override Task EnrichModel(PersonVO content, IUrlHelper urlHelper)
+        protected override Task EnrichModel(BookVO content, IUrlHelper urlHelper)
         {
-            var path = "api/person/v1";
+            var path = "api/book/v1";
             string link = getLink(content.Id, urlHelper, path);
 
             content.Links.Add(new HyperMediaLink()
             {
                 Action = HttpActionVerb.GET,
-                Href = link, 
+                Href = link,
                 Rel = RelationType.self,
                 Type = ResponseTypeFormat.DefaultGet
             });

@@ -9,6 +9,7 @@ using RestWithASPNETErudio.Repository;
 using Microsoft.Net.Http.Headers;
 using RestWithASP_NET8Udemy.Hypermedia.Filters;
 using RestWithASP_NET8Udemy.Hypermedia.Enricher;
+using MySqlConnector;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,7 @@ builder.Services.AddMvc(options =>
 var filterOptions = new HyperMediaFilterOptions();
 
 filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
 //Dependency Injection
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplementation>();
