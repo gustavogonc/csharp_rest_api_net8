@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RestWithASP_NET8Udemy.Model;
 
 namespace RestWithASPNETErudio.Model.Context
 {
@@ -12,5 +13,6 @@ namespace RestWithASPNETErudio.Model.Context
 
         public DbSet<Person> Persons { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
