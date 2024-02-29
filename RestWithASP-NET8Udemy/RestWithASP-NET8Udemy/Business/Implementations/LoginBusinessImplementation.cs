@@ -88,5 +88,10 @@ namespace RestWithASP_NET8Udemy.Business.Implementations
                 refreshToken);
 
         }
+
+        public bool RevokeToken(string userName)
+        {
+            return _repository.RevokeToken(userName);
+        }
     }
 }

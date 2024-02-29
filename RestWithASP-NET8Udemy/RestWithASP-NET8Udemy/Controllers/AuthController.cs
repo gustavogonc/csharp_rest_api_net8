@@ -57,5 +57,20 @@ namespace RestWithASP_NET8Udemy.Controllers
             }
             return Ok(token);
         }
+
+        [HttpGet]
+        [Route("revoke")]
+        [Authorize("Bearer")]
+        public IActionResult Revoke()
+        {
+            var userName = User.Identity.Name;
+            var result = _loginBusiness.RevokeToken(userName);
+
+            if (!result)
+            {
+                return BadRequest("Invalid client request");
+            }
+            return NoContent();
+        }
     }
 }

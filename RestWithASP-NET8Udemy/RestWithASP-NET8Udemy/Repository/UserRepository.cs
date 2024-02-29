@@ -23,6 +23,18 @@ namespace RestWithASP_NET8Udemy.Repository
             var pass = ComputerHash(user.Password, SHA256.Create());
             return _context.Users.FirstOrDefault(u => (u.UserName == user.Username) && ( u.Password == pass));
         }
+        public bool RevokeToken(string userName)
+        {
+            var user = _context.Users.SingleOrDefault(u => u.UserName == userName);
+            if(user is null)
+            {
+                return false;
+            }
+            user.RefreshToken = null;
+            _context.SaveChanges();
+
+            return true;
+        }
 
         public User RefreshUserInfo(User user)
         {
@@ -55,5 +67,6 @@ namespace RestWithASP_NET8Udemy.Repository
             Byte[] hashedBytes = algorithm.ComputeHash(inputBytes);
             return BitConverter.ToString(hashedBytes);
         }
+
     }
 }
