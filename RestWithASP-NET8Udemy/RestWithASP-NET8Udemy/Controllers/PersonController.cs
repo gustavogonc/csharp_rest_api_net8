@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETErudio.Data.VO;
 using RestWithASP_NET8Udemy.Hypermedia.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestWithASPNETErudio.Controllers
 {
 
     [ApiController]
+    [Authorize("Bearer")]
     [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonController : ControllerBase
     {
