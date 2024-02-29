@@ -14,6 +14,10 @@ namespace RestWithASP_NET8Udemy.Repository
         {
             _context = context;
         }
+        public User ValidateCredentials(string userName)
+        {
+            return _context.Users.SingleOrDefault(u => u.UserName == userName);
+        }
         public User ValidateCredentials(UserVO user)
         {
             var pass = ComputerHash(user.Password, SHA256.Create());
