@@ -18,6 +18,6 @@ namespace RestWithASP_NET8Udemy.Model
         [Column("refresh_token")]
         public string? RefreshToken { get; set; }
         [Column("refresh_token_expiry_type")]
-        public DateTime RefreshTokenExpiryTipe { get; set; }
+        public DateTime RefreshTokenExpiryTime { get; set; }
     }
 }
