@@ -1,4 +1,5 @@
 ﻿using RestWithASPNETErudio.Data.VO;
+using RestWithASPNETErudio.Model;
 
 namespace RestWithASPNETErudio.Business
 {
@@ -8,6 +9,7 @@ namespace RestWithASPNETErudio.Business
         PersonVO FindByID(long id);
         List<PersonVO> FindAll();
         PersonVO Update(PersonVO person);
+        PersonVO Disabled(long id);
         void Delete(long id);
     }
 }

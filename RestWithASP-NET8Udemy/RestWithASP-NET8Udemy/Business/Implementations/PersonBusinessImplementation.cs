@@ -1,4 +1,5 @@
-﻿using RestWithASPNETErudio.Data.Converter.Implementations;
+﻿using RestWithASP_NET8Udemy.Repository;
+using RestWithASPNETErudio.Data.Converter.Implementations;
 using RestWithASPNETErudio.Data.VO;
 using RestWithASPNETErudio.Model;
 using RestWithASPNETErudio.Repository;
@@ -8,11 +9,11 @@ namespace RestWithASPNETErudio.Business.Implementations
     public class PersonBusinessImplementation : IPersonBusiness
     {
 
-        private readonly IRepository<Person> _repository;
+        private readonly IPersonRepository _repository;
 
         private readonly PersonConverter _converter;
 
-        public PersonBusinessImplementation(IRepository<Person> repository)
+        public PersonBusinessImplementation(IPersonRepository repository)
         {
             _repository = repository;
             _converter = new PersonConverter();
@@ -46,10 +47,20 @@ namespace RestWithASPNETErudio.Business.Implementations
             return _converter.Parse(personEntity);
         }
 
+        // Method responsible for disable a person form an ID
+        public PersonVO Disabled(long id)
+        {
+            var personEntity = _repository.Disabled(id);
+
+            return _converter.Parse(personEntity);
+        }
+
         // Method responsible for deleting a person from an ID
         public void Delete(long id)
         {
             _repository.Delete(id);
         }
+
+        
     }
 }
