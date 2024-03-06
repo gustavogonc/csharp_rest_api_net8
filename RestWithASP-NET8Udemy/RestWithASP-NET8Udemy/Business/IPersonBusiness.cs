@@ -1,4 +1,5 @@
-﻿using RestWithASPNETErudio.Data.VO;
+﻿using RestWithASP_NET8Udemy.Hypermedia.Utils;
+using RestWithASPNETErudio.Data.VO;
 using RestWithASPNETErudio.Model;
 
 namespace RestWithASPNETErudio.Business
@@ -9,6 +10,7 @@ namespace RestWithASPNETErudio.Business
         PersonVO FindByID(long id);
         List<PersonVO> FindByName(string firstName, string lastName);
         List<PersonVO> FindAll();
+        PagedSearchVO<PersonVO> FindWithPagedSearch(string name, string sortDirection, int pageSize, int page);
         PersonVO Update(PersonVO person);
         PersonVO Disabled(long id);
         void Delete(long id);

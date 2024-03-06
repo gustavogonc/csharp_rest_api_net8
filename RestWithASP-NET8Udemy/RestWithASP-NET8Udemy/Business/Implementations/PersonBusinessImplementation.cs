@@ -1,4 +1,5 @@
-﻿using RestWithASP_NET8Udemy.Repository;
+﻿using RestWithASP_NET8Udemy.Hypermedia.Utils;
+using RestWithASP_NET8Udemy.Repository;
 using RestWithASPNETErudio.Data.Converter.Implementations;
 using RestWithASPNETErudio.Data.VO;
 using RestWithASPNETErudio.Model;
@@ -23,6 +24,38 @@ namespace RestWithASPNETErudio.Business.Implementations
         public List<PersonVO> FindAll()
         {
             return _converter.Parse(_repository.FindAll());
+        }
+
+        public PagedSearchVO<PersonVO> FindWithPagedSearch(string name, string sortDirection, int pageSize, int page)
+        {
+            var offSet = page > 0 ? (page - 1) * pageSize : 0;
+            var sort = (!string.IsNullOrWhiteSpace(sortDirection)) && !sortDirection.Equals("desc") ? "asc" : "desc";
+            var size = (pageSize < 1) ? 1 : pageSize;
+
+            string query = @"SELECT * FROM PERSON P WHERE 1 = 1";
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query += $"AND p.name like '%{name}%'";
+
+            }
+            query += $"ORDER BY P.FIRSTNAME {sort} LIMIT {size} OFFSET {offSet}";
+                            
+
+            var persons = _repository.FindWithPagedSearch(query);
+            string countQuery = "SELECT count(*) FROM PERSON P WHERE 1 = 1";
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                countQuery += $"AND p.name like '%{name}%'";
+
+            }
+            int totalResults = _repository.GetCount(countQuery);
+            return new PagedSearchVO<PersonVO> { 
+            CurrentPage = offSet,
+            List = _converter.Parse(persons),
+            PageSize = size, 
+            SortDirections = sort,
+            TotalResults = totalResults
+            };
         }
 
         // Method responsible for returning one person by ID
