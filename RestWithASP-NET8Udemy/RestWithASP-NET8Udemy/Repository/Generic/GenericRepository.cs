@@ -9,6 +9,7 @@ namespace RestWithASPNETErudio.Repository.Generic
         protected MySQLContext _context;
 
         private DbSet<T> dataset;
+
         public GenericRepository(MySQLContext context)
         {
             _context = context;
@@ -81,6 +82,27 @@ namespace RestWithASPNETErudio.Repository.Generic
         public bool Exists(long id)
         {
             return dataset.Any(p => p.Id.Equals(id));
+        }
+
+        public List<T> FindWithPagedSearch(string query)
+        {
+            return dataset.FromSqlRaw<T>(query).ToList();
+        }
+
+        public int GetCount(string query)
+        {
+            string result = "";
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    result = command.ExecuteScalar()!.ToString()!;
+                }
+            }
+                return int.Parse(result);
         }
     }
 }
