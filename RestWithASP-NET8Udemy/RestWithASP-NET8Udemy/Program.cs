@@ -79,10 +79,10 @@ builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(
     new MySqlServerVersion(new Version(8, 0, 29)))
 );
 
-if (builder.Environment.IsDevelopment())
-{
-    MigrateDatabase(connection);
-}
+//if (builder.Environment.IsDevelopment())
+//{
+//    MigrateDatabase(connection);
+//}
 
 builder.Services.AddMvc(options =>
 {

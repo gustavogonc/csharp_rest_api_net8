@@ -1,0 +1,12 @@
+name: dockercompose11242164575215478202
+services:
+  restwithasp-net8udemy:
+    build:
+      context: E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy
+      dockerfile: RestWithASP-NET8Udemy/Dockerfile
+    image: restwithaspnet8udemy
+    networks:
+      default: null
+networks:
+  default:
+    name: dockercompose11242164575215478202_default
