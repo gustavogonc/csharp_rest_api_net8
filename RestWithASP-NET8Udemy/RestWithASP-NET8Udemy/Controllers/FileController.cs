@@ -29,5 +29,17 @@ namespace RestWithASP_NET8Udemy.Controllers
             FileDetailVO detail = await _fileBusiness.SaveFileToDisk(file);
             return new OkObjectResult(detail);
         }
+
+
+        [HttpPost("uploadFile")]
+        [ProducesResponseType((200), Type = typeof(List<FileDetailVO>))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Produces("application/json")]
+        public async Task<IActionResult> UploadManyFile([FromForm] List<IFormFile> files)
+        {
+            List<FileDetailVO> details = await _fileBusiness.SaveFilesToDisk(files);
+            return new OkObjectResult(details);
+        }
     }
 }
