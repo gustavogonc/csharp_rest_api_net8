@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  restwithasp-net8udemy:
+    image: ${DOCKER_REGISTRY-}restwithaspnet8udemy
+    build:
+      context: .
+      dockerfile: RestWithASP-NET8Udemy/Dockerfile

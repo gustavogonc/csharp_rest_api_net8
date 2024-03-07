@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("c858b7d4-ebfa-4429-8c70-22f148a88108")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("RestWithASP-NET8Udemy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa8327b6d2efd1f5bf42bcfd395e1d0d8bc4e66f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3da500503040c5aea4001bfdf658cdec93e49b3d")]
 [assembly: System.Reflection.AssemblyProductAttribute("RestWithASP-NET8Udemy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RestWithASP-NET8Udemy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

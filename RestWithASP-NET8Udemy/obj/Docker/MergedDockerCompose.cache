@@ -1,0 +1,36 @@
+name: dockercompose11242164575215478202
+services:
+  restwithasp-net8udemy:
+    build:
+      context: E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy
+      dockerfile: RestWithASP-NET8Udemy/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ASPNETCORE_HTTPS_PORTS: "8081"
+    image: restwithaspnet8udemy
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\Gustavo\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Gustavo\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose11242164575215478202_default
