@@ -1,0 +1,122 @@
+name: dockercompose11242164575215478202
+services:
+  db:
+    build:
+      context: E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy
+      dockerfile: db/Dockerfile
+    command:
+      - mysqld
+      - --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: rest_with_asp_net_udemy
+      MYSQL_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_USER: docker
+      TZ: America/Sao_Paulo
+    image: rest-with-asp-net-erudio-db
+    networks:
+      erudio-network: null
+    ports:
+      - mode: ingress
+        target: 3306
+        published: "3308"
+        protocol: tcp
+    restart: always
+  rest-with-asp-net-erudio:
+    build:
+      context: E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy
+      dockerfile: RestWithASPNETErudio/Dockerfile
+    depends_on:
+      db:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      TZ: America/Sao_Paulo
+    image: rest-with-asp-net-erudio
+    networks:
+      erudio-network: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "4430"
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        published: "44300"
+        protocol: tcp
+  restwithasp-net8udemy:
+    build:
+      context: E:\Gustavo\projetosCsharp\RestWithASP-NET8Udemy\RestWithASP-NET8\RestWithASP-NET8Udemy
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: RestWithASP-NET8Udemy
+    container_name: RestWithASP-NET8Udemy
+    entrypoint:
+      - tail
+      - -f
+      - /dev/null
+    labels:
+      com.microsoft.visual-studio.project-name: RestWithASP-NET8Udemy
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/RestWithASP-NET8Udemy.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\Users\Gustavo\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Gustavo\AppData\Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Gustavo\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Gustavo\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Gustavo\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\TokenService.Proxy\linux-x64\net6.0
+        target: /TokenService.Proxy
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\HotReloadProxy\linux-x64\net6.0
+        target: /HotReloadProxy
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose11242164575215478202_default
+  erudio-network:
+    name: dockercompose11242164575215478202_erudio-network
+    driver: bridge
